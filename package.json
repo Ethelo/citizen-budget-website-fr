@@ -1,22 +1,15 @@
 {
-  "name": "gulp3",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "name": "cb-website",
   "devDependencies": {
-    "browser-sync": "^2.11.1",
-    "del": "^2.2.0",
-    "gulp": "^3.9.0",
-    "gulp-cache": "^0.4.1",
-    "gulp-data": "^1.2.1",
-    "gulp-imagemin": "^3.0.1",
-    "gulp-shell": "^0.5.2",
+    "browser-sync": "^2.13.0",
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-file": "^0.3.0",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-nunjucks-render": "^2.0.0",
-    "gulp-sass": "^2.1.1"
+    "gulp-sass": "^2.3.2",
+    "gulp-shell": "^0.5.2",
+    "gulp-util": "^3.0.7",
+    "run-sequence": "^1.2.2"
   }
 }
