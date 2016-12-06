@@ -59,6 +59,14 @@ gulp.task('cname-fr', function() {
     .pipe(gulp.dest('public/fr'));
 });
 
+// See: http://stackoverflow.com/q/40453806/4142567
+// TODO: Remove this task when this issue is published:
+//   https://github.com/github/pages-gem/pull/352
+gulp.task('nojekyll', function () {
+  return gulp.src(['.nojekyll'])
+    .pipe(gulp.dest('public'));
+});
+
 // Nunjucks
 gulp.task('nunjucks-en', function() {
   // Gets .html and .nunjucks files in pages
@@ -111,7 +119,7 @@ gulp.task('push-gh-pages-fr', function() {
 gulp.task('deploy', function(callback) {
   runSequence(
     'clean',
-    ['sass', 'nunjucks-en', 'nunjucks-fr', 'image-dev', 'vendor', 'js-dev'],
+    ['sass', 'nunjucks-en', 'nunjucks-fr', 'image-dev', 'vendor', 'js-dev', 'nojekyll'],
     ['cname-en', 'cname-fr'],
     'push-gh-master-en',
     'push-gh-pages-en',
