@@ -64,7 +64,8 @@ gulp.task('cname-fr', function() {
 //   https://github.com/github/pages-gem/pull/352
 gulp.task('nojekyll', function () {
   return gulp.src(['.nojekyll'])
-    .pipe(gulp.dest('public'));
+    .pipe(gulp.dest('public/en'))
+    .pipe(gulp.dest('public/fr'));
 });
 
 // Nunjucks
@@ -89,30 +90,28 @@ gulp.task('nunjucks-fr', function() {
 });
 
 gulp.task('push-gh-master-en', shell.task([
-  '=== pushing to cb-en master ===',
   'git push cb-en master'
 ]));
 
 gulp.task('push-gh-master-fr', shell.task([
-  '=== pushing to cb-fr master ===',
   'git push cb-fr master'
 ]));
 
 gulp.task('push-gh-pages-en', function() {
-  var remote = 'git@github.com:opennorth/citizen-budget-website.git';
+  var remote = 'https://github.com/opennorth/citizen-budget-website.git';
 
   gutil.log('=== pushing to cb-en gh-pages ===');
 
-  return gulp.src('public/en/**/*')
+  return gulp.src('public/en/**/*', {dot: true})
     .pipe(ghPages({ remoteUrl: remote, force: true }));
 });
 
 gulp.task('push-gh-pages-fr', function() {
-  var remote = 'git@github.com:opennorth/citizen-budget-website-fr.git';
+  var remote = 'https://github.com/opennorth/citizen-budget-website-fr.git';
 
   gutil.log('=== pushing to cb-fr gh-pages ===');
 
-  return gulp.src('public/fr/**/*')
+  return gulp.src('public/fr/**/*', {dot: true})
     .pipe(ghPages({ remoteUrl: remote, force: true }));
 });
 
